@@ -3,13 +3,13 @@ package tn.edu.espritCs.myCard.domain;
 public class Offers {
 
 	private int idOffers;
-	private int minCredit;
+	private int pointNumber;
 	private float discount;
 	
-	public Offers(int idOffers, int minCredit, float discount) {
+	public Offers(int pointNumber, float discount) {
 		super();
-		this.idOffers = idOffers;
-		this.minCredit = minCredit;
+
+		this.pointNumber = pointNumber;
 		this.discount = discount;
 	}
 
@@ -21,12 +21,14 @@ public class Offers {
 		this.idOffers = idOffers;
 	}
 
-	public int getMinCredit() {
-		return minCredit;
+	
+
+	public int getPointNumber() {
+		return pointNumber;
 	}
 
-	public void setMinCredit(int minCredit) {
-		this.minCredit = minCredit;
+	public void setPointNumber(int pointNumber) {
+		this.pointNumber = pointNumber;
 	}
 
 	public float getDiscount() {

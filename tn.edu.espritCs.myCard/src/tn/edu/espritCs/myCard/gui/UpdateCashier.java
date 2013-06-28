@@ -36,6 +36,8 @@ public class UpdateCashier extends JFrame
     {
         super();
         try {
+        	
+        	
     		modelDefautTable.addColumn("First Name");
     		modelDefautTable.addColumn("Last Name");
     		modelDefautTable.addColumn("Phone Number");
@@ -54,11 +56,11 @@ public class UpdateCashier extends JFrame
                  
     		JFrame frame = new JFrame("Update Chasier's Data from cell");
     		JPanel panel = new JPanel();
-
+    		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     		tableChasier = new JTable(modelDefautTable);
     	
     		JTableHeader header = tableChasier.getTableHeader();
-    		header.setBackground(Color.yellow);
+    		//header.setBackground(Color.yellow);
     		JScrollPane pane = new JScrollPane(tableChasier);
     		JButton btnNewButton = new JButton("Apply Changes");
     		btnNewButton.addActionListener(new ActionListener()

@@ -24,9 +24,6 @@ public class AddCustomer extends JFrame
 	private JTextField textFieldLastName;
 	private JTextField textFieldPhoneNumber;
 	private JTextField textFieldEmail;
-	//private JTextField textFieldLogin;
-	//private JTextField textFieldPassword;
-
 	/**
 	 * Launch the application.
 	 */
@@ -73,12 +70,6 @@ public class AddCustomer extends JFrame
 		textFieldEmail = new JTextField();
 		textFieldEmail.setColumns(10);
 
-		//textFieldLogin = new JTextField();
-		//textFieldLogin.setColumns(10);
-
-		//textFieldPassword = new JTextField();
-		//textFieldPassword.setColumns(10);
-
 		JLabel lblFirstName = new JLabel("First Name");
 
 		JLabel lblLastName = new JLabel("Last Name");
@@ -86,10 +77,6 @@ public class AddCustomer extends JFrame
 		JLabel lblPhoneNumber = new JLabel("Phone Number");
 
 		JLabel lblEmail = new JLabel("Email");
-
-		//JLabel lblLogin= new JLabel("Login");
-
-		//JLabel lblPassword = new JLabel("Password");
 
 		JButton submitFrom = new JButton("Submit Form");
 
@@ -100,9 +87,13 @@ public class AddCustomer extends JFrame
 				CustomerDao customerDao = new CustomerDao();
 				Customer customer = new Customer(textFieldFirstName.getText(), textFieldLastName
 						.getText(), textFieldPhoneNumber.getText(), textFieldEmail
-						.getText());//, textFieldLogin.getText(), textFieldPassword
-						//.getText());
+						.getText());
 				Assert.assertTrue(customerDao.addCustomer(customer));
+				textFieldFirstName.setText("");
+				textFieldLastName.setText("");
+				textFieldEmail.setText("");
+				textFieldPhoneNumber.setText("");
+				
 			}
 		});
 
@@ -158,44 +149,12 @@ public class AddCustomer extends JFrame
 																				lblEmail)
 																		.addGap(35))
 
-														/*.addGroup(
-																Alignment.TRAILING,
-																gl_contentPane
-																		.createSequentialGroup()
-																		.addContainerGap(
-																				GroupLayout.DEFAULT_SIZE,
-																				Short.MAX_VALUE)
-																		.addComponent(
-																				lblLogin)
-																		.addGap(35))
-
-														.addGroup(
-																Alignment.TRAILING,
-																gl_contentPane
-																		.createSequentialGroup()
-																		.addContainerGap(
-																				GroupLayout.DEFAULT_SIZE,
-																				Short.MAX_VALUE)
-																		.addComponent(
-																				lblPassword)
-																		.addGap(35))*/
-
 										)
 
 										.addGroup(
 												gl_contentPane
 														.createParallelGroup(
 																Alignment.LEADING)
-														/*.addComponent(
-																textFieldPassword,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																textFieldLogin,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE)*/
 														.addComponent(
 																textFieldEmail,
 																GroupLayout.PREFERRED_SIZE,
@@ -279,32 +238,6 @@ public class AddCustomer extends JFrame
 														.addComponent(
 																lblEmail))
 										.addGap(20)
-
-										/*.addGroup(
-												gl_contentPane
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																textFieldLogin,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																lblLogin))
-										.addGap(20)
-
-										.addGroup(
-												gl_contentPane
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																textFieldPassword,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																lblPassword))
-										.addGap(20)*/
 
 										.addComponent(submitFrom)
 										.addContainerGap(48, Short.MAX_VALUE)));

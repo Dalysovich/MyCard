@@ -27,20 +27,16 @@ public class ModelListCashier extends AbstractTableModel
 		CashierDao cashierDao = new CashierDao();
         cashierDao.fillAllCashiers();
 	}
-	//private UtilJdbc utilJdbc = new UtilJdbc();
+	
 	private CashierDao cashierDao = new CashierDao();
-	//private final List<Cashier> cashiers; 
-	//private final List<String> cashiersIndex; 
+	 
     private final String[] entetes = {"First Name", "Last Name", "Phone Number", "Email", "Login", "Password"};
   
     
     public ModelListCashier() 
     {
         super();
-        cashierDao.fillAllCashiers();
-      //  cashiers = new ArrayList<Cashier>(cashierDao.getListCashiers());
-      //  cashiersIndex = new ArrayList<>(cashierDao.getListCashiersIndex());
-        
+        cashierDao.fillAllCashiers();       
     }
  
     public int getRowCount() 

@@ -26,7 +26,7 @@ public class ListCashier extends JFrame
         super();
         
         setTitle("Show all Cashier");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         tableCashier = new JTable(modelListCashier);
         getContentPane().add(new JScrollPane(tableCashier), BorderLayout.CENTER);
         JPanel boutons = new JPanel();

@@ -20,12 +20,20 @@ public class CustomerDao
 	public boolean addCustomer(Customer customer) 
 	{
 		boolean b = false;
+		int idCustomer=-1;
 		try 
 		{
 			Statement statement = utilJdbc.dataBaseConnetion().createStatement();
-			String sql = "insert into Customer (firstNameCustomer, lastNameCustomer,phoneNumberCustomer,emailCustomer) " +"values('"+ customer.getFirstNameUser() + "','"+ customer.getLastNameUser() + "','"+ customer.getPhoneNumberUser() + "','"+ customer.getEmailUser() + "')";
+			String sqlId = "select MAX(idCustomer) from customer";
+			ResultSet resultSet = statement.executeQuery(sqlId);
+			while(resultSet.next())
+			{
+				idCustomer = Integer.parseInt(resultSet.getString(1));
+			}
+			idCustomer++;
+			String sql = "insert into Customer (firstNameCustomer, lastNameCustomer,phoneNumberCustomer,emailCustomer,barCode) " +"values('"+ customer.getFirstNameUser() + "','"+ customer.getLastNameUser() + "','"+ customer.getPhoneNumberUser() + "','"+ customer.getEmailUser() + "','"+ customer.createBarCode(idCustomer) + "')";
 			statement.executeUpdate(sql);
-			System.out.println("New Customer has been succefully added");
+			//System.out.println("New Customer has been succefully added");
 			b = true;
 			statement.close();
 		} 
@@ -36,13 +44,13 @@ public class CustomerDao
 		return b;
 	}
 	
-    public boolean deleteCustomerById(int idUserToDelete)
+    public boolean deleteCustomerById(int idCustomerToDelete)
     {
 		boolean b = false;
 		try 
 		{
 			Statement statement = utilJdbc.dataBaseConnetion().createStatement();
-        	String sql = "Delete from customer where idCustomer='" + idUserToDelete + "'";
+        	String sql = "Delete from customer where idCustomer='" + idCustomerToDelete + "'";
         	statement.executeUpdate(sql);
 			System.out.println("The Customer has been deleted correctly");
 			b = true;
@@ -55,7 +63,7 @@ public class CustomerDao
 		return b;
 	}
 
-    public void fillAllCashiers()
+    public void fillAllCustomer()
     {
         try 
         {
@@ -65,7 +73,7 @@ public class CustomerDao
         	while (resultSet.next()) 
         	{
         		listCustomersIndex.add(resultSet.getString(1));
-        		listCustomers.add(new Customer(resultSet.getString(2) ,resultSet.getString(3),resultSet.getString(4),resultSet.getString(5)));
+        		listCustomers.add(new Customer(resultSet.getString(2) ,resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getString(6)));
         	}	
         	statement.close();
         }
@@ -80,7 +88,7 @@ public class CustomerDao
     	try
     	{
     		Statement statement = utilJdbc.dataBaseConnetion().createStatement();   	           
-    		String sql = "update customer set firstNameCustomer='"+ customer.getFirstNameUser() + "',lastNameCustomer='"+ customer.getLastNameUser() + "',phoneNumberCustomer='"+ customer.getPhoneNumberUser() + "',emailCustomer='"+ customer.getEmailUser() + "',login='" + "'  where idCustomer='"+ idCustomerToUpdate + "'  ";
+    		String sql = "update customer set firstNameCustomer='"+ customer.getFirstNameUser() + "',lastNameCustomer='"+ customer.getLastNameUser() + "',phoneNumberCustomer='"+ customer.getPhoneNumberUser() + "',emailCustomer='"+ customer.getEmailUser() + "'  where idCustomer='"+ idCustomerToUpdate + "'  ";
     		statement.executeUpdate(sql);
     	}
     	catch (SQLException e) 
@@ -90,12 +98,12 @@ public class CustomerDao
     }
     
  
-	public List<Customer> getListCashiers() 
+	public List<Customer> getListCustomers() 
 	{
 		return listCustomers;
 	}
 
-	public List<String> getListCashiersIndex()
+	public List<String> getListCustomersIndex()
 	{
 		return listCustomersIndex;
 	}

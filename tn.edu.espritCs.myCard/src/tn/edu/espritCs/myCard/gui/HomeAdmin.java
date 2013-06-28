@@ -17,7 +17,8 @@ public class HomeAdmin extends JFrame {
   private JMenu menuFidelityOffersManagement = new JMenu("Fidelity Offers Management");
   
   private JMenuItem menuItemAddCashier = new JMenuItem("Add Cashier");
-  private JMenuItem menuItemListCashiers = new JMenuItem("List Cashiers");
+  private JMenuItem menuItemDeleteCashiers = new JMenuItem("Delete Cashier");
+  private JMenuItem menuItemUpdateCashiers = new JMenuItem("Update Cashier");
   private JMenuItem menuItemClose = new JMenuItem("Close");
   private JMenuItem menuItemAddCustomer = new JMenuItem("Add Customer");
   private JMenuItem menuItemListCustomers = new JMenuItem("List Customers");
@@ -34,7 +35,8 @@ public class HomeAdmin extends JFrame {
  
     //On initialise nos menus      
     this.menuCashierAccountManagement.add(menuItemAddCashier);
-    this.menuCashierAccountManagement.add(menuItemListCashiers);
+    this.menuCashierAccountManagement.add(menuItemDeleteCashiers);
+    this.menuCashierAccountManagement.add(menuItemUpdateCashiers);
     //Ajout d'un séparateur
     this.menuCashierAccountManagement.addSeparator();
     menuItemClose.addActionListener(new ActionListener(){
@@ -48,6 +50,20 @@ public class HomeAdmin extends JFrame {
         AddCashier newCashier=new AddCashier();
        	newCashier.setVisible(true);
        	newCashier.setSize(800, 600);
+        }        
+      });
+    menuItemDeleteCashiers.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0) {
+        	
+        ListCashier deleteCashier=new ListCashier();
+        deleteCashier.setVisible(true);
+        deleteCashier.setSize(800, 600);
+        }        
+      });
+    menuItemUpdateCashiers.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0) {       	
+        UpdateCashier updateCashier=new UpdateCashier();
+        updateCashier.setVisible(false);
         }        
       });
     this.menuCashierAccountManagement.add(menuItemClose); 
