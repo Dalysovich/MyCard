@@ -33,6 +33,9 @@ public class CustomerDao
 			idCustomer++;
 			String sql = "insert into Customer (firstNameCustomer, lastNameCustomer,phoneNumberCustomer,emailCustomer,barCode) " +"values('"+ customer.getFirstNameUser() + "','"+ customer.getLastNameUser() + "','"+ customer.getPhoneNumberUser() + "','"+ customer.getEmailUser() + "','"+ customer.createBarCode(idCustomer) + "')";
 			statement.executeUpdate(sql);
+			
+			String sqlCard = "insert into card (barCode,idCustomer,credit) " +"values('"+ customer.createBarCode(idCustomer) + "','"+ idCustomer + "',0)";
+			statement.executeUpdate(sqlCard);
 			//System.out.println("New Customer has been succefully added");
 			b = true;
 			statement.close();

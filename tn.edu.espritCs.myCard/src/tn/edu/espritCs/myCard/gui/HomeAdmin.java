@@ -21,7 +21,9 @@ public class HomeAdmin extends JFrame {
   private JMenuItem menuItemUpdateCashiers = new JMenuItem("Update Cashier");
   private JMenuItem menuItemClose = new JMenuItem("Close");
   private JMenuItem menuItemAddCustomer = new JMenuItem("Add Customer");
-  private JMenuItem menuItemListCustomers = new JMenuItem("List Customers");
+  private JMenuItem menuItemDeleteCustomer = new JMenuItem("Delete Customer");
+  private JMenuItem menuItemUpdateCustomer = new JMenuItem("Update Cashier");
+  
   private JMenuItem menuItemUpdateOffers = new JMenuItem("Update Offers");
 
   public static void main(String[] args){
@@ -69,9 +71,40 @@ public class HomeAdmin extends JFrame {
     this.menuCashierAccountManagement.add(menuItemClose); 
     
     this.menuCustomerAccountManagment.add(menuItemAddCustomer);
-    this.menuCustomerAccountManagment.add(menuItemListCustomers);
- 
+    this.menuCustomerAccountManagment.add(menuItemDeleteCustomer);
+    this.menuCustomerAccountManagment.add(menuItemUpdateCustomer);
+    
+    menuItemAddCustomer.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0) {
+        	
+        AddCustomer newCustomer=new AddCustomer();
+       	newCustomer.setVisible(true);
+       	newCustomer.setSize(800, 600);
+        }        
+      });
+    menuItemDeleteCustomer.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0) {
+        	
+        ListCustomer deleteCustomer=new ListCustomer();
+        deleteCustomer.setVisible(true);
+        deleteCustomer.setSize(800, 600);
+        }        
+      });
+    menuItemUpdateCustomer.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0) {       	
+        UpdateCustomer updateCustomer=new UpdateCustomer();
+       // updateCustomer.setVisible(false);
+        }        
+      });
+    
     this.menuFidelityOffersManagement.add(menuItemUpdateOffers);
+    
+    menuItemUpdateOffers.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0) {       	
+        NewOffers newOffers=new NewOffers();
+        newOffers.setVisible(true);
+        }        
+      });
     //L'ordre d'ajout va déterminer l'ordre d'apparition dans le menu de gauche à droite
     //Le premier ajouté sera tout à gauche de la barre de menu et inversement pour le dernier
     this.menuBar.add(menuCashierAccountManagement);

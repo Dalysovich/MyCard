@@ -15,8 +15,8 @@ public class HomeCashier extends JFrame {
   private JMenu menuTransformFidelityPoints = new JMenu("Transform Fidelity Points");
 
   
-  private JMenuItem menuItemAddCashier = new JMenuItem("Add Cashier");
-  private JMenuItem menuItemListCashiers = new JMenuItem("List Cashiers");
+  private JMenuItem menuItemScan = new JMenuItem("Scan your card");
+  
   private JMenuItem menuItemClose = new JMenuItem("Close");
   
 
@@ -26,12 +26,12 @@ public class HomeCashier extends JFrame {
  
   public HomeCashier(){
     this.setSize(800, 600);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     this.setLocationRelativeTo(null);
  
     //On initialise nos menus      
-    this.menuTransformFidelityPoints.add(menuItemAddCashier);
-    this.menuTransformFidelityPoints.add(menuItemListCashiers);
+    this.menuTransformFidelityPoints.add(menuItemScan);
+
     //Ajout d'un séparateur
     this.menuTransformFidelityPoints.addSeparator();
     menuItemClose.addActionListener(new ActionListener(){
@@ -39,6 +39,15 @@ public class HomeCashier extends JFrame {
         System.exit(0);
       }        
     });
+    
+    menuItemScan.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0) {
+        	
+        TransformPoints transformPoints=new TransformPoints();
+        transformPoints.setVisible(true);
+        transformPoints.setSize(800, 600);
+        }        
+      });
     this.menuTransformFidelityPoints.add(menuItemClose); 
     
 
